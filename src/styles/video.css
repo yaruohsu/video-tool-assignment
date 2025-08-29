@@ -1,0 +1,72 @@
+@import 'tailwindcss';
+@config "../../tailwind.config.js";
+
+@layer components {
+  .video-container {
+    @apply flex-1 flex items-center justify-center p-4 md:p-8;
+  }
+
+  .video-wrapper {
+    @apply w-full max-w-2xl;
+  }
+
+  .video-screen {
+    @apply bg-black rounded-lg overflow-hidden shadow-2xl aspect-video h-full flex flex-col items-center justify-center text-white;
+  }
+
+  .video-title {
+    @apply text-2xl md:text-3xl font-bold;
+  }
+
+  .video-subtitle {
+    @apply text-gray-300 text-sm md:text-base;
+  }
+
+  .control-panel {
+    @apply bg-gray-700 p-4 md:p-6;
+  }
+
+  .control-content {
+    @apply max-w-2xl mx-auto;
+  }
+
+  .control-buttons {
+    @apply flex items-center justify-center gap-4 mb-4;
+  }
+
+  .control-btn {
+    @apply p-2 hover:bg-gray-600 rounded-lg transition-colors;
+  }
+
+  .play-btn {
+    @apply p-3 bg-primary-600 hover:bg-primary-700 rounded-full transition-colors;
+  }
+
+  .progress-container {
+    @apply flex items-center gap-3;
+  }
+
+  .time-display {
+    @apply text-white text-sm font-mono;
+  }
+
+  .progress-bar {
+    @apply flex-1 bg-gray-600 rounded-full h-2 cursor-pointer relative;
+  }
+
+  .progress-fill {
+    @apply bg-primary-500 h-2 rounded-full relative;
+  }
+
+  .progress-thumb {
+    @apply absolute right-0 top-1/2 transform translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-primary-500 rounded-full border-2 border-white shadow-lg;
+  }
+
+  .progress-markers {
+    @apply relative -mt-2;
+  }
+
+  .progress-marker {
+    @apply absolute w-2 h-2 bg-primary-500 rounded-full opacity-70;
+  }
+}
