@@ -1,1 +1,1 @@
-export { default as HighlightPlayer } from './components/HighlightPlayer';
+export { default as Preview } from './components/Preview';

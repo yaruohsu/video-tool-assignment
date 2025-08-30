@@ -49,7 +49,7 @@
   }
 
   .preview-area {
-    @apply w-full md:w-1/2 bg-gray-800 flex flex-col order-1 md:order-2;
+    @apply w-full md:w-1/2 p-4 md:p-6 bg-gray-800 flex flex-col order-1 md:order-2;
   }
 }
 

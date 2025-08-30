@@ -1,13 +1,21 @@
 import { TranscriptEditor } from '../modules/editor';
-import { HighlightPlayer } from '../modules/preview';
+import { VideoUploader } from '../modules/upload';
+import useVideoStore from '../modules/store/videoStore'; // test code
+import { Preview } from '../modules/preview';
 
 const App = () => {
+  const videoUrl = useVideoStore((state) => state.videoUrl);
+
   return (
     <div className="layout-container">
-      <div className="layout-flex">
-        <TranscriptEditor />
-        <HighlightPlayer />
-      </div>
+      {!videoUrl ? (
+        <VideoUploader />
+      ) : (
+        <div className="layout-flex">
+          <TranscriptEditor />
+          <Preview />
+        </div>
+      )}
     </div>
   );
 };

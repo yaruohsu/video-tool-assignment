@@ -1,4 +1,5 @@
 import clsx from 'clsx';
+import { Title } from '../../components';
 
 interface VideoTranscriptItem {
   time: string;
@@ -31,7 +32,7 @@ const TranscriptEditor = () => {
   return (
     <div className="editing-area scrollbar-thin">
       <div className="editing-content">
-        <h1 className="text-2xl font-bold mb-6 text-gray-800">Transcript</h1>
+        <Title>Transcript</Title>
         <div className="space-y-6">
           {sections.map((section, sectionIndex) => (
             <div key={sectionIndex} className="section-card">
