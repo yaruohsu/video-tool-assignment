@@ -1,12 +1,16 @@
-import useVideoStore from '../store/videoStore';
+import useVideoStore from '../store/useVideoStore';
+import useVideoProcessing from './useVideoProcessing';
 
 const useVideoUpload = () => {
   const videoUrl = useVideoStore((state) => state.videoUrl);
   const setVideoUrl = useVideoStore((state) => state.setVideoUrl);
 
+  const { processVideo } = useVideoProcessing();
+
   const uploadToServer = async (file: File) => {
     console.log('uploading:', file.name);
-    // integration with backend API would go here
+
+    processVideo(file);
   };
 
   const validateFile = (file: File) => {

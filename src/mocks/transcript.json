@@ -1,0 +1,419 @@
+{
+  "success": true,
+  "data": {
+    "videoId": "interstellar_scene_extended_001",
+    "metadata": {
+      "title": "Interstellar - Cooper's Mission Briefing and Launch Sequence",
+      "duration": 90,
+      "language": "en",
+      "transcriptionStatus": "completed"
+    },
+    "sections": [
+      {
+        "id": "section_1",
+        "title": "Mission Briefing",
+        "startTime": 0,
+        "endTime": 35,
+        "segments": [
+          {
+            "id": "seg_001",
+            "startTime": 0,
+            "endTime": 3.5,
+            "text": "We're not meant to save the world.",
+            "speaker": "Professor Brand",
+            "isHighlighted": true,
+            "highlightColor": null,
+            "highlightNote": "Key philosophical statement about humanity's role"
+          },
+          {
+            "id": "seg_002",
+            "startTime": 3.5,
+            "endTime": 6.8,
+            "text": "We're meant to leave it.",
+            "speaker": "Professor Brand",
+            "isHighlighted": true,
+            "highlightColor": null,
+            "highlightNote": "Continuation of central theme"
+          },
+          {
+            "id": "seg_003",
+            "startTime": 6.8,
+            "endTime": 10.2,
+            "text": "And this is the mission you never came back from.",
+            "speaker": "Cooper",
+            "isHighlighted": false,
+            "highlightColor": null,
+            "highlightNote": null
+          },
+          {
+            "id": "seg_004",
+            "startTime": 10.2,
+            "endTime": 14.1,
+            "text": "Because the problem is gravity.",
+            "speaker": "Professor Brand",
+            "isHighlighted": true,
+            "highlightColor": null,
+            "highlightNote": "Central scientific challenge"
+          },
+          {
+            "id": "seg_005",
+            "startTime": 14.1,
+            "endTime": 18.7,
+            "text": "How to escape it when you're one of Earth's creatures.",
+            "speaker": "Professor Brand",
+            "isHighlighted": true,
+            "highlightColor": null,
+            "highlightNote": "Fundamental dilemma"
+          },
+          {
+            "id": "seg_006",
+            "startTime": 18.7,
+            "endTime": 22.3,
+            "text": "Cooper, this world's a treasure.",
+            "speaker": "Professor Brand",
+            "isHighlighted": false,
+            "highlightColor": null,
+            "highlightNote": null
+          },
+          {
+            "id": "seg_007",
+            "startTime": 22.3,
+            "endTime": 26.5,
+            "text": "But it's been telling us to leave for a while now.",
+            "speaker": "Professor Brand",
+            "isHighlighted": true,
+            "highlightColor": null,
+            "highlightNote": "Environmental message"
+          },
+          {
+            "id": "seg_008",
+            "startTime": 26.5,
+            "endTime": 30,
+            "text": "Mankind was born on Earth.",
+            "speaker": "Cooper",
+            "isHighlighted": true,
+            "highlightColor": null,
+            "highlightNote": "Beginning of iconic quote"
+          },
+          {
+            "id": "seg_009",
+            "startTime": 30,
+            "endTime": 35,
+            "text": "It was never meant to die here.",
+            "speaker": "Cooper",
+            "isHighlighted": true,
+            "highlightColor": null,
+            "highlightNote": "Completion of the famous quote"
+          }
+        ]
+      },
+      {
+        "id": "section_2",
+        "title": "Pre-Launch Preparation",
+        "startTime": 35,
+        "endTime": 60,
+        "segments": [
+          {
+            "id": "seg_010",
+            "startTime": 35,
+            "endTime": 38.5,
+            "text": "The gravitational anomalies changed everything.",
+            "speaker": "Dr. Mann",
+            "isHighlighted": false,
+            "highlightColor": null,
+            "highlightNote": null
+          },
+          {
+            "id": "seg_011",
+            "startTime": 38.5,
+            "endTime": 42.8,
+            "text": "Gargantua is out there, waiting.",
+            "speaker": "Dr. Mann",
+            "isHighlighted": true,
+            "highlightColor": null,
+            "highlightNote": "Reference to the black hole"
+          },
+          {
+            "id": "seg_012",
+            "startTime": 42.8,
+            "endTime": 46.2,
+            "text": "Time is the one thing we can't make more of.",
+            "speaker": "Cooper",
+            "isHighlighted": true,
+            "highlightColor": null,
+            "highlightNote": "Central theme about time constraints"
+          },
+          {
+            "id": "seg_013",
+            "startTime": 46.2,
+            "endTime": 50.1,
+            "text": "The equation needs to be solved before I die.",
+            "speaker": "Professor Brand",
+            "isHighlighted": false,
+            "highlightColor": null,
+            "highlightNote": null
+          },
+          {
+            "id": "seg_014",
+            "startTime": 50.1,
+            "endTime": 54.3,
+            "text": "Murphy's law doesn't mean that something bad will happen.",
+            "speaker": "Cooper",
+            "isHighlighted": true,
+            "highlightColor": null,
+            "highlightNote": "Important explanation of Murphy's Law"
+          },
+          {
+            "id": "seg_015",
+            "startTime": 54.3,
+            "endTime": 60,
+            "text": "It means that whatever can happen, will happen.",
+            "speaker": "Cooper",
+            "isHighlighted": true,
+            "highlightColor": null,
+            "highlightNote": "Completion of Murphy's Law explanation"
+          }
+        ]
+      },
+      {
+        "id": "section_3",
+        "title": "Launch Sequence",
+        "startTime": 60,
+        "endTime": 90,
+        "segments": [
+          {
+            "id": "seg_016",
+            "startTime": 60,
+            "endTime": 63.8,
+            "text": "We have a mission control, we have a crew.",
+            "speaker": "Mission Control",
+            "isHighlighted": false,
+            "highlightColor": null,
+            "highlightNote": null
+          },
+          {
+            "id": "seg_017",
+            "startTime": 63.8,
+            "endTime": 67.5,
+            "text": "Roger that, Houston. Endurance is go for launch.",
+            "speaker": "Cooper",
+            "isHighlighted": false,
+            "highlightColor": null,
+            "highlightNote": null
+          },
+          {
+            "id": "seg_018",
+            "startTime": 67.5,
+            "endTime": 71.2,
+            "text": "We're going to solve this.",
+            "speaker": "Amelia Brand",
+            "isHighlighted": true,
+            "highlightColor": null,
+            "highlightNote": "Expression of determination and hope"
+          },
+          {
+            "id": "seg_019",
+            "startTime": 71.2,
+            "endTime": 75.6,
+            "text": "One way or another, we're going to solve this.",
+            "speaker": "Amelia Brand",
+            "isHighlighted": true,
+            "highlightColor": null,
+            "highlightNote": "Reinforcement of resolve"
+          },
+          {
+            "id": "seg_020",
+            "startTime": 75.6,
+            "endTime": 79.8,
+            "text": "The bulk beings, they're trying to help us.",
+            "speaker": "Cooper",
+            "isHighlighted": true,
+            "highlightColor": null,
+            "highlightNote": "Reference to higher dimensional beings"
+          },
+          {
+            "id": "seg_021",
+            "startTime": 79.8,
+            "endTime": 84.1,
+            "text": "Don't trust what you're going to see.",
+            "speaker": "TARS",
+            "isHighlighted": false,
+            "highlightColor": null,
+            "highlightNote": null
+          },
+          {
+            "id": "seg_022",
+            "startTime": 84.1,
+            "endTime": 90,
+            "text": "Love is the one thing we're capable of perceiving that transcends dimensions of time and space.",
+            "speaker": "Amelia Brand",
+            "isHighlighted": true,
+            "highlightColor": null,
+            "highlightNote": "Most iconic quote about love transcending physics"
+          }
+        ]
+      }
+    ],
+    "timelineData": [
+      {
+        "startTime": 0,
+        "endTime": 3.5,
+        "segmentId": "seg_001",
+        "isHighlighted": true,
+        "color": null
+      },
+      {
+        "startTime": 3.5,
+        "endTime": 6.8,
+        "segmentId": "seg_002",
+        "isHighlighted": true,
+        "color": null
+      },
+      {
+        "startTime": 6.8,
+        "endTime": 10.2,
+        "segmentId": "seg_003",
+        "isHighlighted": false,
+        "color": null
+      },
+      {
+        "startTime": 10.2,
+        "endTime": 14.1,
+        "segmentId": "seg_004",
+        "isHighlighted": true,
+        "color": null
+      },
+      {
+        "startTime": 14.1,
+        "endTime": 18.7,
+        "segmentId": "seg_005",
+        "isHighlighted": true,
+        "color": null
+      },
+      {
+        "startTime": 18.7,
+        "endTime": 22.3,
+        "segmentId": "seg_006",
+        "isHighlighted": false,
+        "color": null
+      },
+      {
+        "startTime": 22.3,
+        "endTime": 26.5,
+        "segmentId": "seg_007",
+        "isHighlighted": true,
+        "color": null
+      },
+      {
+        "startTime": 26.5,
+        "endTime": 30,
+        "segmentId": "seg_008",
+        "isHighlighted": true,
+        "color": null
+      },
+      {
+        "startTime": 30,
+        "endTime": 35,
+        "segmentId": "seg_009",
+        "isHighlighted": true,
+        "color": null
+      },
+      {
+        "startTime": 35,
+        "endTime": 38.5,
+        "segmentId": "seg_010",
+        "isHighlighted": false,
+        "color": null
+      },
+      {
+        "startTime": 38.5,
+        "endTime": 42.8,
+        "segmentId": "seg_011",
+        "isHighlighted": true,
+        "color": null
+      },
+      {
+        "startTime": 42.8,
+        "endTime": 46.2,
+        "segmentId": "seg_012",
+        "isHighlighted": true,
+        "color": null
+      },
+      {
+        "startTime": 46.2,
+        "endTime": 50.1,
+        "segmentId": "seg_013",
+        "isHighlighted": false,
+        "color": null
+      },
+      {
+        "startTime": 50.1,
+        "endTime": 54.3,
+        "segmentId": "seg_014",
+        "isHighlighted": true,
+        "color": null
+      },
+      {
+        "startTime": 54.3,
+        "endTime": 60,
+        "segmentId": "seg_015",
+        "isHighlighted": true,
+        "color": null
+      },
+      {
+        "startTime": 60,
+        "endTime": 63.8,
+        "segmentId": "seg_016",
+        "isHighlighted": false,
+        "color": null
+      },
+      {
+        "startTime": 63.8,
+        "endTime": 67.5,
+        "segmentId": "seg_017",
+        "isHighlighted": false,
+        "color": null
+      },
+      {
+        "startTime": 67.5,
+        "endTime": 71.2,
+        "segmentId": "seg_018",
+        "isHighlighted": true,
+        "color": null
+      },
+      {
+        "startTime": 71.2,
+        "endTime": 75.6,
+        "segmentId": "seg_019",
+        "isHighlighted": true,
+        "color": null
+      },
+      {
+        "startTime": 75.6,
+        "endTime": 79.8,
+        "segmentId": "seg_020",
+        "isHighlighted": true,
+        "color": null
+      },
+      {
+        "startTime": 79.8,
+        "endTime": 84.1,
+        "segmentId": "seg_021",
+        "isHighlighted": false,
+        "color": null
+      },
+      {
+        "startTime": 84.1,
+        "endTime": 90,
+        "segmentId": "seg_022",
+        "isHighlighted": true,
+        "color": null
+      }
+    ],
+    "stats": {
+      "totalSegments": 22,
+      "highlightedSegments": 13,
+      "totalDuration": 90
+    }
+  }
+}
