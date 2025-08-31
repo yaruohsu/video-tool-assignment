@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react';
 import { Play, ChevronRight, ChevronLeft, Pause } from 'lucide-react';
-import useVideoStore from '../../store/videoStore';
+import useVideoStore from '../../store/useVideoStore';
 
 const HighlightPlayer = () => {
   const videoUrl = useVideoStore((state) => state.videoUrl);

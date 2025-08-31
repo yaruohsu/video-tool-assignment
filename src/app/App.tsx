@@ -1,6 +1,6 @@
 import { TranscriptEditor } from '../modules/editor';
 import { VideoUploader } from '../modules/upload';
-import useVideoStore from '../modules/store/videoStore'; // test code
+import useVideoStore from '../modules/store/useVideoStore';
 import { Preview } from '../modules/preview';
 
 const App = () => {
