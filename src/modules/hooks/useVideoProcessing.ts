@@ -1,10 +1,12 @@
 import { transcriptApi } from '../../api';
 import useTranscriptStore from '../store/useTranscriptStore';
 import useApiStatusStore from '../store/useApiStatusStore';
+import useTimelineStore from '../store/useTimelineStore';
 
 const useVideoProcessing = () => {
   const { setLoading, setError } = useApiStatusStore();
   const { setTranscript } = useTranscriptStore();
+  const { setTimelineData } = useTimelineStore();
 
   const processVideo = async (videoFile: File) => {
     try {
@@ -13,6 +15,7 @@ const useVideoProcessing = () => {
 
       const response = await transcriptApi.processVideo(videoFile);
       setTranscript(response.data.sections);
+      setTimelineData(response.data.timelineData);
     } catch (err) {
       const errorMessage = err instanceof Error ? err.message : 'Processing failed';
       setError(errorMessage);
