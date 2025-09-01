@@ -2,9 +2,10 @@ import type { DragEvent, ChangeEvent } from 'react';
 import { Upload } from 'lucide-react';
 import { VideoUploadInput } from '../../components';
 import useVideoUpload from '../../hooks/useVideoUpload';
+import { MAX_SIZE_MB } from '../../../constants';
 
 const VideoUploader = () => {
-  const { handleFileUpload } = useVideoUpload({ maxSizeMB: 50 });
+  const { handleFileUpload } = useVideoUpload();
 
   const handleDrop = (e: DragEvent<HTMLDivElement>) => {
     e.preventDefault();
@@ -40,7 +41,7 @@ const VideoUploader = () => {
 
             <p className="mb-2 text-sm text-gray-600 block md:hidden">Tap here to select a file</p>
 
-            <p className="text-xs text-gray-400">MP4, MOV, AVI (max 10MB)</p>
+            <p className="text-xs text-gray-400">{`MP4, MOV, AVI (max ${MAX_SIZE_MB}MB)`}</p>
           </div>
           <VideoUploadInput id="dropzone-file" className="hidden" onChange={handleFileChange} />
         </label>

@@ -8,7 +8,7 @@ interface TranscriptSegmentRawData {
   highlightNotes?: string;
 }
 
-interface TranscriptSectionRawData {
+export interface TranscriptSectionRawData {
   id: string;
   title: string;
   startTime: number;
@@ -17,8 +17,8 @@ interface TranscriptSectionRawData {
   segmentsNotes?: string;
 }
 
-interface TimelineRawDataPoint {
-  tartTime: number;
+export interface TimelineRawDataPoint {
+  startTime: number;
   endTime: number;
   segmentId: string;
   isHighlighted: boolean;
@@ -30,7 +30,6 @@ export interface ProcessVideoResponse {
   success: boolean;
   data: {
     videoId: string;
-    originalVideoUrl: string;
     metadata: {
       title: string;
       duration: number; //seconds
