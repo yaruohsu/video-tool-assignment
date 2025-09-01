@@ -1,7 +1,16 @@
 import useVideoStore from '../store/useVideoStore';
 import useVideoProcessing from './useVideoProcessing';
 
-const useVideoUpload = () => {
+type UseVideoUploadOptions = {
+  maxSizeMB?: number; // default to 10 MB
+};
+
+type UseVideoUploadResult = {
+  handleFileUpload: (file: File) => void;
+};
+
+const useVideoUpload = (options?: UseVideoUploadOptions): UseVideoUploadResult => {
+  const maxSize = (options?.maxSizeMB || 10) * 1024 * 1024; // bytes
   const videoUrl = useVideoStore((state) => state.videoUrl);
   const setVideoUrl = useVideoStore((state) => state.setVideoUrl);
 
@@ -18,9 +27,14 @@ const useVideoUpload = () => {
     return validTypes.includes(file.type);
   };
 
-  const handleFiles = (file: File) => {
+  const handleFileUpload = (file: File) => {
     if (!validateFile(file)) {
       alert('Sorry, we currently only support MP4, MOV, and AVI files.');
+      return;
+    }
+
+    if (file.size > maxSize) {
+      alert('Sorry, the maximum allowed file size is 10 MB.');
       return;
     }
 
@@ -37,7 +51,7 @@ const useVideoUpload = () => {
   };
 
   return {
-    handleFiles,
+    handleFileUpload,
   };
 };
 

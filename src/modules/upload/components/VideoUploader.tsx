@@ -1,38 +1,49 @@
 import type { DragEvent, ChangeEvent } from 'react';
+import { Upload } from 'lucide-react';
 import { VideoUploadInput } from '../../components';
 import useVideoUpload from '../../hooks/useVideoUpload';
 
 const VideoUploader = () => {
-  const { handleFiles } = useVideoUpload();
+  const { handleFileUpload } = useVideoUpload({ maxSizeMB: 50 });
 
   const handleDrop = (e: DragEvent<HTMLDivElement>) => {
     e.preventDefault();
     const file = e.dataTransfer.files[0];
-    if (file) handleFiles(file);
+    if (file) handleFileUpload(file);
   };
 
   const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
-    if (file) handleFiles(file);
+    if (file) handleFileUpload(file);
   };
 
   return (
-    <div className="mt-4 flex flex-col items-center space-y-4">
+    <div className="flex items-center justify-center min-h-screen bg-primary-50">
       <div
+        id="dropzone"
+        className="relative"
         onDrop={handleDrop}
         onDragOver={(e) => e.preventDefault()}
-        className="w-96 h-40 border-2 border-dashed border-gray-400 flex flex-col items-center justify-center rounded-xl cursor-pointer hover:border-blue-500 transition"
       >
-        <p className="text-center p-1 md:p-2">
-          Drag and drop your video here, or use the button to upload
-        </p>
-        <p className="text-gray-500 text-xs p-1">Supported formats: MP4, MOV, AVI</p>
+        <label
+          id="upload-label"
+          className="flex flex-col items-center justify-center w-80 h-40 md:w-96 md:h-48 border-2 border-dashed rounded-2xl cursor-pointer transition-colors duration-300
+             border-primary-200 bg-white hover:border-primary-500 hover:bg-primary-50"
+        >
+          <div className="flex flex-col items-center justify-center pt-5 pb-6">
+            <Upload className='className="w-12 h-12 mb-3 text-primary-500 hover:text-primary-600 animate-bounce' />
 
-        <VideoUploadInput onChange={handleFileChange}>
-          <span className="px-4 py-2 bg-blue-500 text-white rounded-lg shadow cursor-pointer hover:bg-blue-600">
-            Select Video
-          </span>
-        </VideoUploadInput>
+            <p className="mb-2 text-sm text-gray-600 hidden md:block">
+              <span className="font-semibold text-primary-600">Drag & Drop</span> your file here or
+              click to select
+            </p>
+
+            <p className="mb-2 text-sm text-gray-600 block md:hidden">Tap here to select a file</p>
+
+            <p className="text-xs text-gray-400">MP4, MOV, AVI (max 10MB)</p>
+          </div>
+          <VideoUploadInput id="dropzone-file" className="hidden" onChange={handleFileChange} />
+        </label>
       </div>
     </div>
   );
