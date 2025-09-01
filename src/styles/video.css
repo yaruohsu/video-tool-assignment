@@ -42,31 +42,15 @@
     @apply p-3 bg-primary-600 hover:bg-primary-700 cursor-pointer rounded-full transition-colors;
   }
 
-  .progress-container {
-    @apply flex items-center gap-3;
+  .timeline-container {
+    @apply w-full px-1 sm:px-2 py-2;
   }
 
-  .time-display {
-    @apply text-white text-sm font-mono;
+  .timeline-bar {
+    @apply relative h-6 sm:h-4 bg-gray-600 cursor-pointer select-none;
   }
 
-  .progress-bar {
-    @apply flex-1 bg-gray-600 rounded-full h-2 cursor-pointer relative;
-  }
-
-  .progress-fill {
-    @apply bg-primary-500 h-2 rounded-full relative;
-  }
-
-  .progress-thumb {
-    @apply absolute right-0 top-1/2 transform translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-primary-500 rounded-full border-2 border-white shadow-lg;
-  }
-
-  .progress-markers {
-    @apply relative -mt-2;
-  }
-
-  .progress-marker {
-    @apply absolute w-2 h-2 bg-primary-500 rounded-full opacity-70;
+  .timeline-thumb {
+    @apply absolute top-1/2 w-1 sm:w-2 h-6 sm:h-4 bg-red-500 transform -translate-y-1/2 -translate-x-1/2 pointer-events-none;
   }
 }

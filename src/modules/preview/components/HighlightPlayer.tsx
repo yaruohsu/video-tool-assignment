@@ -1,13 +1,41 @@
-import { useRef, useState } from 'react';
+import { useRef, useEffect } from 'react';
 import { Play, ChevronRight, ChevronLeft, Pause } from 'lucide-react';
 import useVideoStore from '../../store/useVideoStore';
+import Timeline from './Timeline';
+import useTimelineStore from '../../store/useTimelineStore';
 
 const HighlightPlayer = () => {
-  const videoUrl = useVideoStore((state) => state.videoUrl);
+  const { videoUrl } = useVideoStore();
+  const {
+    timelineData,
+    currentTime,
+    duration,
+    isPlaying,
+    togglePlayPause,
+    seekTo,
+    skipToNextHighlight,
+    skipToPreviousHighlight,
+    setCurrentTime,
+    setDuration,
+  } = useTimelineStore();
+
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [playing, setPlaying] = useState(false);
-  const [currentTime, setCurrentTime] = useState(0);
-  const [duration, setDuration] = useState(0);
+
+  useEffect(() => {
+    if (videoRef.current) {
+      if (isPlaying) {
+        videoRef.current.play();
+      } else {
+        videoRef.current.pause();
+      }
+    }
+  }, [isPlaying]);
+
+  useEffect(() => {
+    if (videoRef.current && Math.abs(videoRef.current.currentTime - currentTime) > 0.5) {
+      videoRef.current.currentTime = currentTime;
+    }
+  }, [currentTime]);
 
   const formatTime = (seconds: number) => {
     const m = Math.floor(seconds / 60);
@@ -15,37 +43,16 @@ const HighlightPlayer = () => {
     return `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
   };
 
-  const togglePlay = () => {
-    if (!videoRef.current) return;
-    if (playing) {
-      videoRef.current.pause();
-    } else {
-      videoRef.current.play();
-    }
-    setPlaying(!playing);
-  };
-
-  const skip = (seconds: number) => {
-    if (videoRef.current) {
-      videoRef.current.currentTime = Math.min(
-        Math.max(videoRef.current.currentTime + seconds, 0),
-        duration
-      );
-    }
-  };
-
   const handleTimeUpdate = () => {
-    if (videoRef.current) setCurrentTime(videoRef.current.currentTime);
+    if (videoRef.current) {
+      setCurrentTime(videoRef.current.currentTime);
+    }
   };
 
   const handleLoadedMetadata = () => {
-    if (videoRef.current) setDuration(videoRef.current.duration);
-  };
-
-  const handleSeek = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const time = parseFloat(e.target.value);
-    if (videoRef.current) videoRef.current.currentTime = time;
-    setCurrentTime(time);
+    if (videoRef.current) {
+      setDuration(videoRef.current.duration);
+    }
   };
 
   return (
@@ -63,51 +70,34 @@ const HighlightPlayer = () => {
           </div>
         </div>
         <div className="control-panel">
-          <div className=" control-content ">
+          <div className="control-content">
             <div className="control-buttons">
-              <button className="control-btn" onClick={() => skip(-5)}>
+              <button className="control-btn" onClick={skipToPreviousHighlight}>
                 <ChevronLeft className="w-6 h-6 text-white" />
               </button>
 
-              <button className="play-btn" onClick={togglePlay}>
-                {playing ? (
+              <button className="play-btn" onClick={togglePlayPause}>
+                {isPlaying ? (
                   <Pause className="w-6 h-6 text-white" />
                 ) : (
                   <Play className="w-6 h-6 text-white" />
                 )}
               </button>
 
-              <button className="control-btn" onClick={() => skip(5)}>
+              <button className="control-btn" onClick={skipToNextHighlight}>
                 <ChevronRight className="w-6 h-6 text-white" />
               </button>
               <span className="flex-shrink-0 text-white text-sm md:text-xs">
                 {formatTime(currentTime)} / {formatTime(duration)}
               </span>
             </div>
-            <div className="progress-container">
-              <input
-                type="range"
-                min={0}
-                max={duration}
-                step={0.1}
-                value={currentTime}
-                onChange={handleSeek}
-                className="w-full mt-2 h-1 bg-gray-300 rounded-lg cursor-pointer accent-blue-500"
+            <div className="box-sizing: content-box;">
+              <Timeline
+                duration={duration}
+                currentTime={currentTime}
+                segments={timelineData}
+                onSeek={seekTo}
               />
-              {/* <span className="time-display">00:45</span>
-              <div className="progress-bar">
-                <div className="progress-fill" style={{ width: '62%' }}>
-                  <div className="progress-thumb"></div>
-                </div>
-                <div className="progress-markers">
-                  <div className="progress-marker" style={{ left: '15%' }}></div>
-                  <div className="progress-marker" style={{ left: '35%' }}></div>
-                  <div className="progress-marker" style={{ left: '55%' }}></div>
-                  <div className="progress-marker" style={{ left: '75%' }}></div>
-                  <div className="progress-marker" style={{ left: '85%' }}></div>
-                </div>
-              </div>
-              <span className="time-display">01:10</span> */}
             </div>
           </div>
         </div>

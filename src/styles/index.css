@@ -1,6 +1,11 @@
 @import 'tailwindcss';
 @config "../../tailwind.config.js";
 
+html,
+body {
+  overflow-x: hidden;
+}
+
 @layer base {
   html {
     scroll-behavior: smooth;
@@ -49,7 +54,7 @@
   }
 
   .preview-area {
-    @apply w-full md:w-1/2 p-4 md:p-6 bg-gray-800 flex flex-col order-1 md:order-2;
+    @apply w-full md:w-1/2 p-4 md:p-6 bg-primary-900 flex flex-col order-1 md:order-2;
   }
 }
 
