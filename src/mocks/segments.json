@@ -1,0 +1,236 @@
+[
+  {
+    "id": "seg-1",
+    "startTime": 0,
+    "endTime": 5,
+    "text": "Hi team, let's kick off today's meeting.",
+    "isHighlighted": false
+  },
+  {
+    "id": "seg-2",
+    "startTime": 5,
+    "endTime": 10,
+    "text": "We need to finalize the API integration.",
+    "isHighlighted": true,
+    "highlightColor": "yellow",
+    "highlightNotes": "Check endpoints"
+  },
+  {
+    "id": "seg-3",
+    "startTime": 10,
+    "endTime": 15,
+    "text": "The UI design looks solid, but responsiveness needs testing.",
+    "isHighlighted": false
+  },
+  {
+    "id": "seg-4",
+    "startTime": 15,
+    "endTime": 20,
+    "text": "Remember to add unit tests for the new modules.",
+    "isHighlighted": true,
+    "highlightColor": "blue",
+    "highlightNotes": "QA priority"
+  },
+  {
+    "id": "seg-5",
+    "startTime": 20,
+    "endTime": 25,
+    "text": "Optimize data fetching to improve loading times.",
+    "isHighlighted": false
+  },
+  {
+    "id": "seg-6",
+    "startTime": 25,
+    "endTime": 30,
+    "text": "Document all endpoints for frontend developers.",
+    "isHighlighted": false
+  },
+  {
+    "id": "seg-7",
+    "startTime": 30,
+    "endTime": 35,
+    "text": "Prepare the client demo slides for tomorrow.",
+    "isHighlighted": true,
+    "highlightColor": "green",
+    "highlightNotes": "Client presentation"
+  },
+  {
+    "id": "seg-8",
+    "startTime": 35,
+    "endTime": 40,
+    "text": "Report any blockers during daily standup.",
+    "isHighlighted": false
+  },
+  {
+    "id": "seg-9",
+    "startTime": 40,
+    "endTime": 45,
+    "text": "Verify the deployment pipeline before merging.",
+    "isHighlighted": true,
+    "highlightColor": "red",
+    "highlightNotes": "Critical"
+  },
+  {
+    "id": "seg-10",
+    "startTime": 45,
+    "endTime": 50,
+    "text": "Plan the next retrospective meeting.",
+    "isHighlighted": false
+  },
+  {
+    "id": "seg-11",
+    "startTime": 50,
+    "endTime": 55,
+    "text": "Ensure all tasks are updated in Jira.",
+    "isHighlighted": false
+  },
+  {
+    "id": "seg-12",
+    "startTime": 55,
+    "endTime": 60,
+    "text": "Great job this sprint, let's keep momentum.",
+    "isHighlighted": true,
+    "highlightColor": "purple",
+    "highlightNotes": "Team motivation"
+  },
+  {
+    "id": "seg-13",
+    "startTime": 60,
+    "endTime": 65,
+    "text": "Let's review the feedback from last release.",
+    "isHighlighted": false
+  },
+  {
+    "id": "seg-14",
+    "startTime": 65,
+    "endTime": 70,
+    "text": "Prioritize the critical bugs first.",
+    "isHighlighted": true,
+    "highlightColor": "orange",
+    "highlightNotes": "Bug fixing"
+  },
+  {
+    "id": "seg-15",
+    "startTime": 70,
+    "endTime": 75,
+    "text": "Discuss the roadmap for the next quarter.",
+    "isHighlighted": false
+  },
+  {
+    "id": "seg-16",
+    "startTime": 75,
+    "endTime": 80,
+    "text": "Allocate resources for the new feature development.",
+    "isHighlighted": false
+  },
+  {
+    "id": "seg-17",
+    "startTime": 80,
+    "endTime": 85,
+    "text": "We need to validate the user stories.",
+    "isHighlighted": true,
+    "highlightColor": "cyan",
+    "highlightNotes": "Validation"
+  },
+  {
+    "id": "seg-18",
+    "startTime": 85,
+    "endTime": 90,
+    "text": "Check cross-browser compatibility for the UI.",
+    "isHighlighted": false
+  },
+  {
+    "id": "seg-19",
+    "startTime": 90,
+    "endTime": 95,
+    "text": "Update the documentation for API changes.",
+    "isHighlighted": false
+  },
+  {
+    "id": "seg-20",
+    "startTime": 95,
+    "endTime": 100,
+    "text": "Prepare the onboarding guide for new team members.",
+    "isHighlighted": true,
+    "highlightColor": "magenta",
+    "highlightNotes": "New hires"
+  },
+  {
+    "id": "seg-21",
+    "startTime": 100,
+    "endTime": 105,
+    "text": "Schedule the code review sessions.",
+    "isHighlighted": false
+  },
+  {
+    "id": "seg-22",
+    "startTime": 105,
+    "endTime": 110,
+    "text": "Ensure CI/CD pipelines are running smoothly.",
+    "isHighlighted": false
+  },
+  {
+    "id": "seg-23",
+    "startTime": 110,
+    "endTime": 115,
+    "text": "Review the analytics dashboard for insights.",
+    "isHighlighted": true,
+    "highlightColor": "lime",
+    "highlightNotes": "Metrics check"
+  },
+  {
+    "id": "seg-24",
+    "startTime": 115,
+    "endTime": 120,
+    "text": "Wrap up the sprint and set next goals.",
+    "isHighlighted": false
+  },
+  {
+    "id": "seg-25",
+    "startTime": 120,
+    "endTime": 125,
+    "text": "Ensure all pull requests are merged timely.",
+    "isHighlighted": false
+  },
+  {
+    "id": "seg-26",
+    "startTime": 125,
+    "endTime": 130,
+    "text": "Celebrate team achievements and milestones.",
+    "isHighlighted": true,
+    "highlightColor": "gold",
+    "highlightNotes": "Motivation"
+  },
+  {
+    "id": "seg-27",
+    "startTime": 130,
+    "endTime": 135,
+    "text": "Plan knowledge-sharing sessions for the team.",
+    "isHighlighted": false
+  },
+  {
+    "id": "seg-28",
+    "startTime": 135,
+    "endTime": 140,
+    "text": "Verify security protocols before deployment.",
+    "isHighlighted": true,
+    "highlightColor": "red",
+    "highlightNotes": "Security"
+  },
+  {
+    "id": "seg-29",
+    "startTime": 140,
+    "endTime": 145,
+    "text": "Check performance benchmarks for the new release.",
+    "isHighlighted": false
+  },
+  {
+    "id": "seg-30",
+    "startTime": 145,
+    "endTime": 150,
+    "text": "End of session, summarize key takeaways.",
+    "isHighlighted": true,
+    "highlightColor": "purple",
+    "highlightNotes": "Summary"
+  }
+]

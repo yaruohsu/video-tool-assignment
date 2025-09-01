@@ -27,9 +27,12 @@ async function apiRequest<T>(endpoint: string, options: RequestInit = {}): Promi
 }
 
 export const transcriptApi = {
-  processVideo: async (videoFile: File): Promise<ProcessVideoResponse> =>
+  processVideo: async (data: {
+    videoFile: File;
+    duration: number;
+  }): Promise<ProcessVideoResponse> =>
     apiRequest<ProcessVideoResponse>('/video/process', {
       method: 'POST',
-      body: JSON.stringify(videoFile),
+      body: JSON.stringify(data),
     }),
 };
