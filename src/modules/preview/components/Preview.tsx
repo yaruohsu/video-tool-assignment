@@ -3,7 +3,7 @@ import { RotateCcw } from 'lucide-react';
 import { Title } from '../../components';
 import HighlightPlayer from './HighlightPlayer';
 import useVideoUpload from '../../hooks/useVideoUpload';
-import VideoUploadInput from '../../components/VideoUploadInput';
+import { VideoUploadInput } from '../../components';
 
 const Preview = () => {
   const { handleFiles } = useVideoUpload();

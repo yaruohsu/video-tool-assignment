@@ -1,9 +1,10 @@
-import { useState } from 'react';
 import { transcriptApi } from '../../api';
+import useTranscriptStore from '../store/useTranscriptStore';
+import useApiStatusStore from '../store/useApiStatusStore';
 
 const useVideoProcessing = () => {
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+  const { setLoading, setError } = useApiStatusStore();
+  const { setTranscript } = useTranscriptStore();
 
   const processVideo = async (videoFile: File) => {
     try {
@@ -11,7 +12,7 @@ const useVideoProcessing = () => {
       setError(null);
 
       const response = await transcriptApi.processVideo(videoFile);
-      console.log('Video processed successfully:', response);
+      setTranscript(response.data.sections);
     } catch (err) {
       const errorMessage = err instanceof Error ? err.message : 'Processing failed';
       setError(errorMessage);
@@ -28,8 +29,6 @@ const useVideoProcessing = () => {
 
   return {
     processVideo,
-    loading,
-    error,
     reset,
   };
 };

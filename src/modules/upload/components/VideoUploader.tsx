@@ -1,5 +1,5 @@
 import type { DragEvent, ChangeEvent } from 'react';
-import VideoUploadInput from '../../components/VideoUploadInput';
+import { VideoUploadInput } from '../../components';
 import useVideoUpload from '../../hooks/useVideoUpload';
 
 const VideoUploader = () => {
