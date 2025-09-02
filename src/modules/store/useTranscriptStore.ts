@@ -18,12 +18,18 @@ interface TranscriptSection {
 
 interface TranscriptStoreState {
   transcript: TranscriptSection[] | null;
+  highlightedSegments: TranscriptSegment[];
+
   setTranscript: (transcript: TranscriptSection[]) => void;
+  setHighlightedSegments: (segments: TranscriptSegment[]) => void;
 }
 
 const useTranscriptStore = create<TranscriptStoreState>((set) => ({
   transcript: null,
+  highlightedSegments: [],
+
   setTranscript: (transcript: TranscriptSection[]) => set({ transcript }),
+  setHighlightedSegments: (segments: TranscriptSegment[]) => set({ highlightedSegments: segments }),
 }));
 
 export default useTranscriptStore;

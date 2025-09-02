@@ -37,6 +37,7 @@ export interface ProcessVideoResponse {
     };
     sections: TranscriptSectionRawData[];
     timelineData: TimelineRawDataPoint[];
+    highlightedSegments: TranscriptSegmentRawData[];
   };
   error?: string;
 }

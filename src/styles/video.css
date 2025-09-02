@@ -47,10 +47,14 @@
   }
 
   .timeline-bar {
-    @apply relative h-6 sm:h-4 bg-gray-600 cursor-pointer select-none;
+    @apply relative h-6 sm:h-4 bg-gray-600 select-none rounded-sm;
   }
 
   .timeline-thumb {
-    @apply absolute top-1/2 w-1 sm:w-2 h-6 sm:h-4 bg-red-500 transform -translate-y-1/2 -translate-x-1/2 pointer-events-none;
+    @apply absolute top-1/2 w-3 h-6 sm:h-4 rounded-sm bg-red-500 transform -translate-y-1/2 -translate-x-1/2 pointer-events-none;
+  }
+
+  .timeline-hint {
+    @apply text-xs text-gray-400 mt-1 text-center;
   }
 }

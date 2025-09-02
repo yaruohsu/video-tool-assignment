@@ -6,25 +6,79 @@ interface TimelineProps {
   duration: number; // seconds
   currentTime: number;
   segments: TimelineState['timelineData'];
+  highlightedSegments: TranscriptSegment[];
   onSeek: (time: number) => void;
 }
 
-const Timeline = ({ duration, currentTime, segments, onSeek }: TimelineProps) => {
+interface TranscriptSegment {
+  id: string;
+  startTime: number;
+  endTime: number;
+  text: string;
+  isHighlighted: boolean;
+}
+
+const Timeline = ({
+  duration,
+  currentTime,
+  segments,
+  highlightedSegments,
+  onSeek,
+}: TimelineProps) => {
   const timelineRef = useRef<HTMLDivElement>(null);
   const [isDragging, setIsDragging] = useState(false);
 
+  const findNearestHighlightSegment = useCallback(
+    (targetTime: number) => {
+      if (highlightedSegments.length === 0) return null;
+
+      const clickedSegment = highlightedSegments.find(
+        (segment) => targetTime >= segment.startTime && targetTime <= segment.endTime
+      );
+
+      if (clickedSegment) {
+        return { segment: clickedSegment, time: targetTime };
+      }
+
+      let nearestSegment = highlightedSegments[0];
+      let minDistance = Math.abs(targetTime - nearestSegment.startTime);
+
+      for (const segment of highlightedSegments) {
+        const distanceToStart = Math.abs(targetTime - segment.startTime);
+        const distanceToEnd = Math.abs(targetTime - segment.endTime);
+        const minSegmentDistance = Math.min(distanceToStart, distanceToEnd);
+
+        if (minSegmentDistance < minDistance) {
+          minDistance = minSegmentDistance;
+          nearestSegment = segment;
+        }
+      }
+
+      const distanceToStart = Math.abs(targetTime - nearestSegment.startTime);
+      const distanceToEnd = Math.abs(targetTime - nearestSegment.endTime);
+      const seekTime =
+        distanceToStart <= distanceToEnd ? nearestSegment.startTime : nearestSegment.endTime;
+
+      return { segment: nearestSegment, time: seekTime };
+    },
+    [highlightedSegments]
+  );
+
   const handleTimelineClick = useCallback(
     (event: React.MouseEvent) => {
-      if (!timelineRef.current) return;
+      if (!timelineRef.current || highlightedSegments.length === 0) return;
 
       const rect = timelineRef.current.getBoundingClientRect();
       const clickX = event.clientX - rect.left;
       const percentage = clickX / rect.width;
-      const newTime = Math.max(0, Math.min(duration, percentage * duration));
+      const targetTime = Math.max(0, Math.min(duration, percentage * duration));
 
-      onSeek(newTime);
+      const result = findNearestHighlightSegment(targetTime);
+      if (result) {
+        onSeek(result.time);
+      }
     },
-    [duration, onSeek]
+    [highlightedSegments.length, duration, findNearestHighlightSegment, onSeek]
   );
 
   const handleMouseDown = useCallback(
@@ -60,7 +114,7 @@ const Timeline = ({ duration, currentTime, segments, onSeek }: TimelineProps) =>
         onMouseUp={handleMouseUp}
         onMouseLeave={handleMouseUp}
       >
-        {segments.map((segment, index) => {
+        {segments.map((segment) => {
           const startPercentage = (segment.startTime / duration) * 100;
           const widthPercentage = (
             ((segment.endTime - segment.startTime) / duration) *
@@ -68,10 +122,11 @@ const Timeline = ({ duration, currentTime, segments, onSeek }: TimelineProps) =>
           ).toFixed(2);
           return (
             <div
-              key={index}
+              key={segment.segmentId}
               className={clsx(
-                'absolute top-0 h-full',
-                segment.isHighlighted ? 'bg-primary-500' : 'bg-gray-400'
+                'absolute top-0 h-full ',
+                segment.isHighlighted && 'bg-primary-500 rounded-sm',
+                segment.isHighlighted && 'hover:bg-primary-200 transition-colors cursor-pointer'
               )}
               style={{
                 left: `${startPercentage}%`,
@@ -83,6 +138,8 @@ const Timeline = ({ duration, currentTime, segments, onSeek }: TimelineProps) =>
 
         <div className="timeline-thumb" style={{ left: `${progressPercentage}%` }} />
       </div>
+
+      <div className="timeline-hint">Click on highlighted segments to navigate</div>
     </div>
   );
 };

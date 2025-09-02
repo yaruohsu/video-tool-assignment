@@ -5,7 +5,7 @@ import useTimelineStore from '../store/useTimelineStore';
 
 const useVideoProcessing = () => {
   const { setLoading, setError } = useApiStatusStore();
-  const { setTranscript } = useTranscriptStore();
+  const { setTranscript, setHighlightedSegments } = useTranscriptStore();
   const { setTimelineData } = useTimelineStore();
 
   const processVideo = async (data: { videoFile: File; duration: number }) => {
@@ -17,6 +17,7 @@ const useVideoProcessing = () => {
 
       setTranscript(response.data.sections);
       setTimelineData(response.data.timelineData);
+      setHighlightedSegments(response.data.highlightedSegments);
     } catch (err) {
       const errorMessage = err instanceof Error ? err.message : 'Processing failed';
       setError(errorMessage);
