@@ -5,7 +5,7 @@ import useTimelineStore from '../../store/useTimelineStore';
 
 const TranscriptEditor = () => {
   const { transcript, toggleSegmentHighlight } = useTranscriptStore();
-  const { seekTo, togglePlayPause } = useTimelineStore();
+  const { seekTo, togglePlayPause, currentSegmentId } = useTimelineStore();
 
   const formatTime = (seconds: number) => {
     const mins = Math.floor(seconds / 60);
@@ -37,7 +37,8 @@ const TranscriptEditor = () => {
                         'transcript-item',
                         segment.isHighlighted
                           ? 'bg-primary-50 border-primary-500 shadow-sm'
-                          : 'bg-gray-50 border-gray-200 hover:bg-gray-100'
+                          : 'bg-gray-50 border-gray-200 hover:bg-gray-100',
+                        currentSegmentId === segment.id && 'bg-primary-500'
                       )}
                     >
                       <div
@@ -58,7 +59,8 @@ const TranscriptEditor = () => {
                         <span
                           className={clsx(
                             'transcript-text',
-                            segment.isHighlighted ? 'text-gray-800 font-medium' : 'text-gray-600'
+                            segment.isHighlighted ? 'text-gray-800 font-medium' : 'text-gray-600',
+                            currentSegmentId === segment.id && 'text-primary-50'
                           )}
                         >
                           {segment.text}

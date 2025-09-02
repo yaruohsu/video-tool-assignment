@@ -114,10 +114,10 @@ const Timeline = ({
         onMouseLeave={handleMouseUp}
       >
         {segments.map((segment, index) => {
-          const startPercentage = (segment.startTime / duration) * 100;
+          const startPercentage = (segment.startTime / duration) * 100 + 0.5;
           const widthPercentage = (
-            ((segment.endTime - segment.startTime) / duration) *
-            100
+            ((segment.endTime - segment.startTime) / duration) * 100 -
+            1
           ).toFixed(2);
           return (
             <div
@@ -126,16 +126,17 @@ const Timeline = ({
               style={{
                 left: `${startPercentage}%`,
                 width: `${widthPercentage}%`,
+                transform: 'translateX(1px)',
               }}
             />
           );
         })}
 
         {highlightedSegments.map((segment) => {
-          const startPercentage = (segment.startTime / duration) * 100;
+          const startPercentage = (segment.startTime / duration) * 100 + 0.5;
           const widthPercentage = (
-            ((segment.endTime - segment.startTime) / duration) *
-            100
+            ((segment.endTime - segment.startTime) / duration) * 100 -
+            1
           ).toFixed(2);
           return (
             <div

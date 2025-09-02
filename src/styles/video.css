@@ -47,11 +47,11 @@
   }
 
   .timeline-bar {
-    @apply relative h-6 sm:h-4 bg-gray-600 select-none rounded-sm;
+    @apply relative h-6 sm:h-4 bg-gray-600 select-none rounded-xs;
   }
 
   .timeline-thumb {
-    @apply absolute top-1/2 w-3 h-6 sm:h-4 rounded-sm bg-red-500 transform -translate-y-1/2 -translate-x-1/2 pointer-events-none;
+    @apply absolute top-1/2 w-3 h-6 sm:h-4 bg-red-500 rounded-xs transform -translate-y-1/2 -translate-x-1/2 pointer-events-none;
   }
 
   .timeline-hint {
@@ -59,6 +59,6 @@
   }
 
   .timeline-highlight {
-    @apply absolute top-0 h-full bg-primary-500 rounded-sm transition-colors hover:bg-primary-200 cursor-pointer;
+    @apply absolute top-0 h-full bg-primary-500 rounded-xs transition-colors hover:bg-primary-200 cursor-pointer;
   }
 }
