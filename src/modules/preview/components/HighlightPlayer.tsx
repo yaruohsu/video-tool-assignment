@@ -25,11 +25,11 @@ const HighlightPlayer = () => {
     setCurrentTime,
     setDuration,
   } = useTimelineStore();
+  const highlightedSegments = useTranscriptStore((state) => state.highlightedSegments);
 
-  const { highlightedSegments } = useTranscriptStore();
   const videoRef = useRef<HTMLVideoElement>(null);
   const [currentHighlightIndex, setCurrentHighlightIndex] = useState<number>(-1);
-  const isSeekingRef = useRef<boolean>(false); // 防止 seek 期間的重複處理
+  const isSeekingRef = useRef<boolean>(false);
 
   const findCurrentHighlightIndex = useCallback(
     (time: number): number => {
@@ -63,7 +63,7 @@ const HighlightPlayer = () => {
   const jumpToHighlight = useCallback(
     (segment: TranscriptSegment) => {
       const index = highlightedSegments.indexOf(segment);
-      isSeekingRef.current = true; // 標記正在 seek
+      isSeekingRef.current = true;
       setCurrentHighlightIndex(index);
       seekTo(segment.startTime);
 

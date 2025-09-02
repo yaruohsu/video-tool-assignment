@@ -1,6 +1,5 @@
 import React, { useState, useRef, useCallback } from 'react';
 import { type TimelineState } from '../../store/useTimelineStore';
-import clsx from 'clsx';
 
 interface TimelineProps {
   duration: number; // seconds
@@ -114,7 +113,7 @@ const Timeline = ({
         onMouseUp={handleMouseUp}
         onMouseLeave={handleMouseUp}
       >
-        {segments.map((segment) => {
+        {segments.map((segment, index) => {
           const startPercentage = (segment.startTime / duration) * 100;
           const widthPercentage = (
             ((segment.endTime - segment.startTime) / duration) *
@@ -122,12 +121,26 @@ const Timeline = ({
           ).toFixed(2);
           return (
             <div
-              key={segment.segmentId}
-              className={clsx(
-                'absolute top-0 h-full ',
-                segment.isHighlighted && 'bg-primary-500 rounded-sm',
-                segment.isHighlighted && 'hover:bg-primary-200 transition-colors cursor-pointer'
-              )}
+              key={index}
+              className="absolute top-0 h-full"
+              style={{
+                left: `${startPercentage}%`,
+                width: `${widthPercentage}%`,
+              }}
+            />
+          );
+        })}
+
+        {highlightedSegments.map((segment) => {
+          const startPercentage = (segment.startTime / duration) * 100;
+          const widthPercentage = (
+            ((segment.endTime - segment.startTime) / duration) *
+            100
+          ).toFixed(2);
+          return (
+            <div
+              key={`highlight-${segment.id}`}
+              className="timeline-highlight"
               style={{
                 left: `${startPercentage}%`,
                 width: `${widthPercentage}%`,
