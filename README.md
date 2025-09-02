@@ -112,5 +112,4 @@ API Response → useVideoProcessing →
 
 ### Mobile
 
-![Mobile-1](assets/mobile-1.png)
-![Mobile-2](assets/mobile-2.png)
+![Mobile](assets/mobile.png)
