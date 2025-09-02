@@ -40,6 +40,7 @@ Open `http://localhost:3000` to see the demo.
 ## Deployment
 
 The project is deployed on **Vercel**: [Live Demo](https://video-highlight-tool.vercel.app)
+By setting `VITE_USE_MSW=true` on vercel, MSW is now supported in production.
 
 **Vercel Deployment Workflow:**
 
@@ -56,19 +57,19 @@ The project is deployed on **Vercel**: [Live Demo](https://video-highlight-tool.
 ```
 video-highlight-tool/
 ├─ src/
-│  ├─ app/                  # App shell
+│  ├─ app/
+│  ├─ api/
+│  ├─ mocks/                # Mock AI API, msw
+│  ├─ constants/
+│  ├─ styles/
 │  ├─ modules/
-│  │   ├─ core/             # Core logic & types (playlist, selection)
-│  │   ├─ mock/             # Mock AI API
+│  │   ├─ components/
 │  │   ├─ store/            # Zustand store
 │  │   ├─ editor/           # Transcript editing area
 │  │   ├─ preview/          # Highlight preview area
 │  │   ├─ upload/           # Video upload component
-│  │   ├─ hooks/            # Reusable hooks
-│  │   └─ utils/            # Utility functions
-│  ├─ assets/               # Video / images for demo
+│  │   └─ hooks/            # Reusable hooks
 │  └─ main.tsx
-├─ tests/                   # Unit & integration tests
 ├─ index.html
 ├─ package.json
 ├─ tsconfig.json
@@ -84,8 +85,7 @@ Each store updates independently to avoid unnecessary re-renders:
 
 - **useTranscriptStore** – handles transcript text and selection state
 - **useTimelineStore** – handles playback time and timeline data
-- **useVideoStore** – handles video files and processing state
-- **useVideoSync** – manages cross-store logic so stores don’t depend on each other directly
+- **useVideoStore** – handles video files
 
 ### Data Flow
 
@@ -93,7 +93,7 @@ Each store updates independently to avoid unnecessary re-renders:
 API Response → useVideoProcessing →
    ├── TranscriptStore (sections, segments, selection)
    ├── TimelineStore (timeline data, playback state)
-   └── VideoStore (video metadata, processing state)
+   └── VideoStore (video metadata)
 ```
 
 ## Notes
@@ -105,4 +105,12 @@ API Response → useVideoProcessing →
 
 ## Screenshots
 
-TBD
+### Desktop
+
+![Desktop-1](assets/desktop-1.png)
+![Desktop-2](assets/desktop-2.png)
+
+### Mobile
+
+![Mobile-1](assets/mobile-1.png)
+![Mobile-2](assets/mobile-2.png)
