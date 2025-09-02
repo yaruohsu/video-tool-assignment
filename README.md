@@ -2,8 +2,6 @@
 
 This project is a demo frontend tool that allows users to upload a video, automatically generate transcripts, select highlight sentences, and preview a highlight clip with transcript overlay.
 
----
-
 ## Key Features
 
 - Upload video files
@@ -12,8 +10,6 @@ This project is a demo frontend tool that allows users to upload a video, automa
 - Preview Area (Right): shows selected highlight clip, transcript overlay, smooth transitions
 - Synchronization between editing and preview
 - Responsive design for desktop & mobile
-
----
 
 ## Tech Stack & Engineering Decisions
 
@@ -24,8 +20,6 @@ This project is a demo frontend tool that allows users to upload a video, automa
 - **RWD**: Flex/Grid layout; mobile stacked, desktop split-screen
 - **Testing**: Vitest + React Testing Library for core logic & UI
 - **Deployment**: Hosted on Vercel for automatic CI/CD deployment; every push to main branch triggers a new build and updates the live demo
-
----
 
 ## Installation & Running
 
@@ -43,8 +37,6 @@ npm run dev
 
 Open `http://localhost:3000` to see the demo.
 
----
-
 ## Deployment
 
 The project is deployed on **Vercel**: [Live Demo](https://video-highlight-tool.vercel.app)
@@ -58,8 +50,6 @@ The project is deployed on **Vercel**: [Live Demo](https://video-highlight-tool.
    - Output Directory: `dist`
 
 4. After deployment, every push to the main branch automatically triggers a new build and updates the live demo.
-
----
 
 ## Folder Structure
 
@@ -86,7 +76,25 @@ video-highlight-tool/
 └─ README.md
 ```
 
----
+## State Management
+
+### Store
+
+Each store updates independently to avoid unnecessary re-renders:
+
+- **useTranscriptStore** – handles transcript text and selection state
+- **useTimelineStore** – handles playback time and timeline data
+- **useVideoStore** – handles video files and processing state
+- **useVideoSync** – manages cross-store logic so stores don’t depend on each other directly
+
+### Data Flow
+
+```
+API Response → useVideoProcessing →
+   ├── TranscriptStore (sections, segments, selection)
+   ├── TimelineStore (timeline data, playback state)
+   └── VideoStore (video metadata, processing state)
+```
 
 ## Notes
 
@@ -94,8 +102,6 @@ video-highlight-tool/
 - Mock API simulates AI transcript generation and highlights.
 - The app is responsive: stacked layout for mobile, split-screen for desktop.
 - The Preview Player synchronizes with the Transcript Editor in real-time.
-
----
 
 ## Screenshots
 
