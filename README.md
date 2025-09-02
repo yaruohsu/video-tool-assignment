@@ -2,8 +2,6 @@
 
 This project is a demo frontend tool that allows users to upload a video, automatically generate transcripts, select highlight sentences, and preview a highlight clip with transcript overlay.
 
----
-
 ## Key Features
 
 - Upload video files
@@ -12,8 +10,6 @@ This project is a demo frontend tool that allows users to upload a video, automa
 - Preview Area (Right): shows selected highlight clip, transcript overlay, smooth transitions
 - Synchronization between editing and preview
 - Responsive design for desktop & mobile
-
----
 
 ## Tech Stack & Engineering Decisions
 
@@ -24,8 +20,6 @@ This project is a demo frontend tool that allows users to upload a video, automa
 - **RWD**: Flex/Grid layout; mobile stacked, desktop split-screen
 - **Testing**: Vitest + React Testing Library for core logic & UI
 - **Deployment**: Hosted on Vercel for automatic CI/CD deployment; every push to main branch triggers a new build and updates the live demo
-
----
 
 ## Installation & Running
 
@@ -43,11 +37,10 @@ npm run dev
 
 Open `http://localhost:3000` to see the demo.
 
----
-
 ## Deployment
 
 The project is deployed on **Vercel**: [Live Demo](https://video-highlight-tool.vercel.app)
+By setting `VITE_USE_MSW=true` on vercel, MSW is now supported in production.
 
 **Vercel Deployment Workflow:**
 
@@ -59,26 +52,24 @@ The project is deployed on **Vercel**: [Live Demo](https://video-highlight-tool.
 
 4. After deployment, every push to the main branch automatically triggers a new build and updates the live demo.
 
----
-
 ## Folder Structure
 
 ```
 video-highlight-tool/
 ├─ src/
-│  ├─ app/                  # App shell
+│  ├─ app/
+│  ├─ api/
+│  ├─ mocks/                # Mock AI API, msw
+│  ├─ constants/
+│  ├─ styles/
 │  ├─ modules/
-│  │   ├─ core/             # Core logic & types (playlist, selection)
-│  │   ├─ mock/             # Mock AI API
+│  │   ├─ components/
 │  │   ├─ store/            # Zustand store
 │  │   ├─ editor/           # Transcript editing area
 │  │   ├─ preview/          # Highlight preview area
 │  │   ├─ upload/           # Video upload component
-│  │   ├─ hooks/            # Reusable hooks
-│  │   └─ utils/            # Utility functions
-│  ├─ assets/               # Video / images for demo
+│  │   └─ hooks/            # Reusable hooks
 │  └─ main.tsx
-├─ tests/                   # Unit & integration tests
 ├─ index.html
 ├─ package.json
 ├─ tsconfig.json
@@ -86,7 +77,24 @@ video-highlight-tool/
 └─ README.md
 ```
 
----
+## State Management
+
+### Store
+
+Each store updates independently to avoid unnecessary re-renders:
+
+- **useTranscriptStore** – handles transcript text and selection state
+- **useTimelineStore** – handles playback time and timeline data
+- **useVideoStore** – handles video files
+
+### Data Flow
+
+```
+API Response → useVideoProcessing →
+   ├── TranscriptStore (sections, segments, selection)
+   ├── TimelineStore (timeline data, playback state)
+   └── VideoStore (video metadata)
+```
 
 ## Notes
 
@@ -95,8 +103,13 @@ video-highlight-tool/
 - The app is responsive: stacked layout for mobile, split-screen for desktop.
 - The Preview Player synchronizes with the Transcript Editor in real-time.
 
----
-
 ## Screenshots
 
-TBD
+### Desktop
+
+![Desktop-1](assets/desktop-1.png)
+![Desktop-2](assets/desktop-2.png)
+
+### Mobile
+
+![Mobile](assets/mobile.png)

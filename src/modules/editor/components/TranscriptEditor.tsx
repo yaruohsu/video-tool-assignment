@@ -1,9 +1,15 @@
 import clsx from 'clsx';
 import { Title } from '../../components';
 import useTranscriptStore from '../../store/useTranscriptStore';
+import useTimelineStore from '../../store/useTimelineStore';
+import { useEffect, useRef } from 'react';
 
 const TranscriptEditor = () => {
-  const { transcript } = useTranscriptStore();
+  const { transcript, toggleSegmentHighlight } = useTranscriptStore();
+  const { seekTo, togglePlayPause, currentSegmentId } = useTimelineStore();
+
+  const containerRef = useRef<HTMLDivElement>(null);
+  const segmentRefs = useRef<Record<string, HTMLDivElement>>({});
 
   const formatTime = (seconds: number) => {
     const mins = Math.floor(seconds / 60);
@@ -11,37 +17,70 @@ const TranscriptEditor = () => {
     return `${mins}:${secs.toString().padStart(2, '0')}`;
   };
 
-  console.log('transcript', transcript);
+  const handleNavToTime = (time: number, isHighlighted: boolean) => (e: React.MouseEvent) => {
+    if (!isHighlighted) return;
+    e.stopPropagation();
+    seekTo(time);
+    togglePlayPause();
+  };
+
+  useEffect(() => {
+    if (!currentSegmentId) return;
+    const el = segmentRefs.current[currentSegmentId];
+    if (el && containerRef.current) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+  }, [currentSegmentId]);
+
   return (
     transcript && (
-      <div className="editing-area scrollbar-thin">
+      <div ref={containerRef} className="editing-area scrollbar-thin">
         <div className="editing-content">
           <Title>Transcript</Title>
           <div className="space-y-6">
             {transcript.map((section, sectionIndex) => (
               <div key={sectionIndex} className="section-card">
                 <h2 className="section-title">{section.title}</h2>
-
                 <div className="space-y-3">
-                  {section.segments.map((item, itemIndex) => (
+                  {section.segments.map((segment) => (
                     <div
-                      key={itemIndex}
+                      key={`${section}-${segment.id}`}
+                      ref={(el) => {
+                        if (el) segmentRefs.current[segment.id] = el;
+                      }}
                       className={clsx(
                         'transcript-item',
-                        item.isHighlighted
-                          ? 'bg-primary-50 border-primary-200 shadow-sm'
-                          : 'bg-gray-50 border-gray-200 hover:bg-gray-100'
+                        segment.isHighlighted
+                          ? 'bg-primary-50 border-primary-500 shadow-sm'
+                          : 'bg-gray-50 border-gray-200 hover:bg-gray-100',
+                        currentSegmentId === segment.id && segment.isHighlighted && 'bg-primary-500'
                       )}
                     >
-                      <div className="flex items-start gap-3">
-                        <span className="transcript-time">{formatTime(item.startTime)}</span>
+                      <div
+                        className="flex items-start gap-3"
+                        onClick={() => toggleSegmentHighlight(section.id, segment.id)}
+                      >
+                        <span
+                          className={clsx(
+                            'transcript-time',
+                            segment.isHighlighted
+                              ? 'bg-primary-200 cursor-pointer'
+                              : 'bg-primary-50 cursor-not-allowed'
+                          )}
+                          onClick={handleNavToTime(segment.startTime, segment.isHighlighted)}
+                        >
+                          {formatTime(segment.startTime)}
+                        </span>
                         <span
                           className={clsx(
                             'transcript-text',
-                            item.isHighlighted ? 'text-gray-800 font-medium' : 'text-gray-600'
+                            segment.isHighlighted ? 'text-gray-800 font-medium' : 'text-gray-600',
+                            currentSegmentId === segment.id &&
+                              segment.isHighlighted &&
+                              'text-primary-50'
                           )}
                         >
-                          {item.text}
+                          {segment.text}
                         </span>
                       </div>
                     </div>
@@ -55,4 +94,5 @@ const TranscriptEditor = () => {
     )
   );
 };
+
 export default TranscriptEditor;

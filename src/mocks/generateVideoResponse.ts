@@ -18,26 +18,33 @@ const sectionTitleSamples = [
   'Discussion',
 ];
 
-const generateVideoResponse = (
-  duration: number // seconds
-): ProcessVideoResponse => {
+const round = (num: number, decimals = 2) => Math.round(num * 10 ** decimals) / 10 ** decimals;
+
+const generateVideoResponse = (duration: number): ProcessVideoResponse => {
   const visibleSegments = segmentsJson
     .filter((s) => s.startTime < duration)
     .map((s) => ({
       ...s,
-      endTime: Math.min(s.endTime, duration),
+      startTime: round(s.startTime),
+      endTime: round(Math.min(s.endTime, duration)),
     }));
 
-  const numSections = Math.min(Math.max(Math.floor(duration / 30), 3), 5); // 3~5 sections
+  // generate 3~5 sections
+  const numSections = Math.min(Math.max(Math.floor(duration / 30), 3), 5);
   const sectionDuration = duration / numSections;
 
+  const assignedSegmentIds = new Set<string>();
+
   const sections: TranscriptSectionRawData[] = Array.from({ length: numSections }).map((_, i) => {
-    const start = i * sectionDuration;
-    const end = (i + 1) * sectionDuration;
+    const start = round(i * sectionDuration);
+    const end = round((i + 1) * sectionDuration);
 
     const sectionSegments = visibleSegments.filter(
-      (seg) => seg.startTime < end && seg.endTime > start
+      (seg) => !assignedSegmentIds.has(seg.id) && seg.startTime < end && seg.endTime > start
     );
+
+    // mark these segments as assigned
+    sectionSegments.forEach((seg) => assignedSegmentIds.add(seg.id));
 
     return {
       id: `section-${i + 1}`,
@@ -68,6 +75,7 @@ const generateVideoResponse = (
       },
       sections,
       timelineData,
+      highlightedSegments: visibleSegments.filter((seg) => seg.isHighlighted),
     },
   };
 };

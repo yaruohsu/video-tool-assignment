@@ -5,12 +5,10 @@ import './styles/index.css';
 import './styles/video.css';
 
 async function enableMocking() {
-  if (!import.meta.env.DEV) {
-    return;
+  if (import.meta.env.MODE === 'development' || import.meta.env.VITE_USE_MSW === 'true') {
+    const { worker } = await import('./mocks/browser');
+    await worker.start();
   }
-
-  const { worker } = await import('./mocks/browser');
-  await worker.start();
 }
 
 enableMocking().then(() => {
