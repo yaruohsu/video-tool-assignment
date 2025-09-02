@@ -39,8 +39,7 @@ Open `http://localhost:3000` to see the demo.
 
 ## Deployment
 
-The project is deployed on **Vercel**: [Live Demo](https://video-highlight-tool.vercel.app)
-By setting `VITE_USE_MSW=true` on vercel, MSW is now supported in production.
+The project is deployed on **Vercel**: [Live Demo](https://video-tool-assignment.vercel.app).  By setting `VITE_USE_MSW=true` on vercel, MSW is now supported in production.
 
 **Vercel Deployment Workflow:**
 
@@ -96,12 +95,6 @@ API Response → useVideoProcessing →
    └── VideoStore (video metadata)
 ```
 
-## Notes
-
-- The core logic is separated from UI for maintainability and easier testing.
-- Mock API simulates AI transcript generation and highlights.
-- The app is responsive: stacked layout for mobile, split-screen for desktop.
-- The Preview Player synchronizes with the Transcript Editor in real-time.
 
 ## Screenshots
 
