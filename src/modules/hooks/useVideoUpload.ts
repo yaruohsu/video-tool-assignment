@@ -12,8 +12,8 @@ function getVideoDuration(file: File): Promise<number> {
     const url = URL.createObjectURL(file);
 
     video.onloadedmetadata = () => {
-      URL.revokeObjectURL(url); // 清理記憶體
-      resolve(video.duration); // duration 以秒為單位
+      URL.revokeObjectURL(url);
+      resolve(video.duration);
     };
 
     video.onerror = () => {
